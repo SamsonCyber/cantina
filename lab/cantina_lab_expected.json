@@ -1,0 +1,47 @@
+{
+  "schema": "cantina_lab_ground_truth/v1",
+  "target": "192.168.1.206",
+  "name": "cantina-lab",
+  "vmid": 206,
+  "node": "pve1",
+  "legal": "homelab enum practice only; OSCP-style surface; no exploit requirement",
+  "notes": "Expected listeners from lab/cantina_lab_setup.sh + juice-shop. Obscure ports are intentional fake banners.",
+  "tcp_expected": {
+    "21": {"service": "ftp", "tier": "common"},
+    "22": {"service": "ssh", "tier": "common"},
+    "23": {"service": "telnet", "tier": "common"},
+    "80": {"service": "http", "tier": "common"},
+    "139": {"service": "netbios-ssn", "tier": "common"},
+    "445": {"service": "microsoft-ds", "tier": "common"},
+    "873": {"service": "rsync", "tier": "uncommon"},
+    "2121": {"service": "ccproxy-ftp", "tier": "obscure"},
+    "2323": {"service": "3d-nfsd", "tier": "obscure"},
+    "3000": {"service": "http", "tier": "common", "app": "juice-shop"},
+    "3306": {"service": "mysql", "tier": "common"},
+    "4444": {"service": "http", "tier": "obscure"},
+    "5000": {"service": "http", "tier": "obscure"},
+    "5432": {"service": "postgresql", "tier": "common"},
+    "5601": {"service": "http", "tier": "obscure", "app": "kibana-fake"},
+    "6378": {"service": "redis?", "tier": "obscure"},
+    "6379": {"service": "redis", "tier": "common"},
+    "7001": {"service": "http", "tier": "obscure", "app": "weblogic-looking"},
+    "8000": {"service": "http", "tier": "common"},
+    "8080": {"service": "http", "tier": "common"},
+    "8443": {"service": "http", "tier": "obscure"},
+    "8888": {"service": "http", "tier": "common"},
+    "9200": {"service": "http", "tier": "obscure", "app": "elasticsearch-fake"},
+    "11211": {"service": "memcache", "tier": "obscure"},
+    "27017": {"service": "mongodb", "tier": "obscure"}
+  },
+  "udp_expected": {
+    "53": {"service": "domain", "tier": "common"},
+    "137": {"service": "netbios-ns", "tier": "common"},
+    "161": {"service": "snmp", "tier": "common"}
+  },
+  "score_weights": {
+    "common_tcp": 1.0,
+    "uncommon_tcp": 1.5,
+    "obscure_tcp": 2.0,
+    "udp": 1.5
+  }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<nmaprun scanner="nmap" args="nmap -sCV" start="1711584000" version="7.94">
+  <host starttime="1711584000" endtime="1711584010">
+    <status state="up" reason="echo-reply"/>
+    <address addr="10.10.10.50" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="target.htb" type="PTR"/>
+    </hostnames>
+    <ports>
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack"/>
+        <service name="ssh" product="OpenSSH" version="8.9p1 Ubuntu 3ubuntu0.1" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack"/>
+        <service name="http" product="Apache httpd" version="2.4.41" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack"/>
+        <service name="microsoft-ds" product="Windows" version="10" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="3306">
+        <state state="open" reason="syn-ack"/>
+        <service name="mysql" product="MySQL" version="5.7.40" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="8080">
+        <state state="open" reason="syn-ack"/>
+        <service name="http-proxy" product="Squid" version="4.10" method="probed" conf="10"/>
+      </port>
+    </ports>
+  </host>
+  <runstats>
+    <finished time="1711584010" timestr="fixture" summary="fixture offline"/>
+  </runstats>
+</nmaprun>
