@@ -31,7 +31,7 @@
 ⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠙⠛⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀
 ```
 
-*(Same art as the CLI banner in `cantina.py` — see [`assets/banner.txt`](assets/banner.txt).)*
+*(Same art as the CLI banner in `cantina.py` - see [`assets/banner.txt`](assets/banner.txt).)*
 
 **Cantina** is an OSCP-legal network recon orchestrator. Port discovery, service enum, and plugin dispatch. No exploitation. No credential spray auto-run.
 
@@ -61,8 +61,8 @@ python cantina.py 10.10.10.5 -t quick
 
 # full enum with known ports (skip rediscovery)
 python cantina.py 10.10.10.5 -t recon \
-  --force-services tcp/80/http tcp/445/smb tcp/22/ssh \
-  -o ./out -j
+ --force-services tcp/80/http tcp/445/smb tcp/22/ssh \
+ -o ./out -j
 
 # multi-target concurrent
 python cantina.py -T hosts.txt -t all --max-workers 3 --timeout 90
@@ -76,22 +76,22 @@ Drop a module under `plugins/` (or `--plugins-dir`):
 
 ```python
 PLUGIN = {
-    "name": "my_enum",
-    "services": ["ftp"],
-    "ports": [21],
-    "enabled": True,
-    "replaces_builtin": True,
-    "description": "FTP enum (enum only)",
-    "legal": "enumeration-only; OSCP-safe; no exploit/spray auto-run",
+ "name": "my_enum",
+ "services": ["ftp"],
+ "ports": [21],
+ "enabled": True,
+ "replaces_builtin": True,
+ "description": "FTP enum (enum only)",
+ "legal": "enumeration-only; OSCP-safe; no exploit/spray auto-run",
 }
 
 def match(signals):
-    return signals.get("svc_type") == "ftp" or int(signals.get("port") or 0) == 21
+ return signals.get("svc_type") == "ftp" or int(signals.get("port") or 0) == 21
 
 def run(ctx):
-    art = ctx.port_dir / "plugin_my_enum.txt"
-    art.write_text(f"enum note for {ctx.target}:{ctx.port}\n")
-    return {"ok": True, "artifact": str(art)}
+ art = ctx.port_dir / "plugin_my_enum.txt"
+ art.write_text(f"enum note for {ctx.target}:{ctx.port}\n")
+ return {"ok": True, "artifact": str(art)}
 ```
 
 `replaces_builtin: True` skips the old monorepo branch for that service so you do not double-run.
@@ -110,11 +110,11 @@ Enumeration only. Authorized targets and own lab / OSCP exam scope only. You are
 ## Layout
 
 ```
-cantina.py              CLI + orchestrator (includes banner)
-cantina_plugins.py      discover / select / run
-plugins/                service enum plugins
-assets/banner.txt       same art as CLI banner
-tests/                  unit tests (stubbed tools)
-lab/                    optional multi-service lab ground truth
-fixtures/               nmap parse fixtures
+cantina.py CLI + orchestrator (includes banner)
+cantina_plugins.py discover / select / run
+plugins/ service enum plugins
+assets/banner.txt same art as CLI banner
+tests/ unit tests (stubbed tools)
+lab/ optional multi-service lab ground truth
+fixtures/ nmap parse fixtures
 ```

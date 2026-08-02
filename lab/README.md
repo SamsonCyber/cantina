@@ -40,15 +40,15 @@ scp -r lab kali@KALI:~/cantina-tools/
 
 # background deep (sudo if you want UDP 137/161)
 sudo python3 ~/cantina-tools/cantina.py 10.10.10.50 -t deep --background \
-  -o ~/cantina-live/10.10.10.50 -j --rate 4
+ -o ~/cantina-live/10.10.10.50 -j --rate 4
 
 # poll progress (does not block short tools)
 python3 ~/cantina-tools/cantina.py --status -o ~/cantina-live/10.10.10.50
 
 # score vs ground truth (any time; re-run after complete for final)
 python3 ~/cantina-tools/cantina_live_bench.py \
-  -o ~/cantina-live/10.10.10.50 \
-  --expected ~/cantina-tools/lab/cantina_lab_expected.json
+ -o ~/cantina-live/10.10.10.50 \
+ --expected ~/cantina-tools/lab/cantina_lab_expected.json
 ```
 
 ## OSCP scope
