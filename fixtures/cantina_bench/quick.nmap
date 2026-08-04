@@ -1,0 +1,15 @@
+# Nmap 7.94 scan initiated (fixture — offline corpus, not a live target)
+Nmap scan report for target.htb (10.10.10.50)
+Host is up (0.020s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+22/tcp   open  ssh           OpenSSH 8.9p1 Ubuntu 3ubuntu0.1
+80/tcp   open  http          Apache httpd 2.4.41
+445/tcp  open  microsoft-ds
+3306/tcp open  unknown
+| jedi: [INFO] Banner: SSH-2.0-OpenSSH_8.9
+| [LOW] Missing X-Frame-Options header
+| [WARNING] SMB signing not required
+|_ [CRITICAL] Anonymous SMB share readable
+Service detection performed.
+# Nmap done
